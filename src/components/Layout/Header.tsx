@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, BarChart2 } from 'lucide-react';
+import { BarChart2, LineChart } from 'lucide-react';
 
 const Header: React.FC = () => {
   return (
@@ -7,8 +7,8 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <Mail className="h-8 w-8 text-blue-600 mr-2" />
-            <h1 className="text-xl font-bold text-gray-800">VisualSend AI</h1>
+            <LineChart className="h-8 w-8 text-blue-600 mr-2" />
+            <h1 className="text-xl font-bold text-gray-800">DataViz AI</h1>
           </div>
           
           <div className="flex items-center">

@@ -9,8 +9,8 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({ onExport }) => {
   return (
     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
       <div>
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Email Campaign Dashboard</h1>
-        <p className="text-gray-500 mt-1">Automatically generated insights and visualizations</p>
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Data Visualization Dashboard</h1>
+        <p className="text-gray-500 mt-1">Automatically generated insights and analytics</p>
       </div>
       
       <div className="flex space-x-3 mt-4 sm:mt-0">

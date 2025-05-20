@@ -2,62 +2,58 @@ import { ColumnMapping } from '../types';
 
 // Map of patterns to look for in column headers
 const columnPatterns: Record<string, RegExp[]> = {
-  emailAddress: [
-    /email/i, 
-    /e-?mail address/i, 
-    /recipient/i,
-    /subscriber/i
+  value: [
+    /value/i,
+    /amount/i,
+    /quantity/i,
+    /number/i,
+    /count/i
   ],
-  status: [
-    /status/i,
-    /delivery status/i,
-    /email status/i,
-    /result/i
-  ],
-  openTime: [
-    /open(ed)?[ _-]?(time|date)/i,
-    /time[ _-]?opened/i,
-    /open timestamp/i
-  ],
-  clickTime: [
-    /click(ed)?[ _-]?(time|date)/i,
-    /time[ _-]?clicked/i,
-    /click timestamp/i
-  ],
-  campaignName: [
-    /campaign[ _-]?name/i,
-    /campaign[ _-]?title/i,
-    /campaign[ _-]?id/i,
-    /email[ _-]?campaign/i
+  category: [
+    /category/i,
+    /type/i,
+    /class/i,
+    /group/i,
+    /segment/i
   ],
   timestamp: [
-    /sent[ _-]?(time|date)/i,
+    /date/i,
+    /time/i,
     /timestamp/i,
-    /date[ _-]?sent/i,
-    /time[ _-]?sent/i
-  ],
-  bounceType: [
-    /bounce[ _-]?type/i,
-    /bounce[ _-]?category/i,
-    /bounce[ _-]?reason/i
+    /period/i
   ],
   location: [
     /location/i,
     /country/i,
     /region/i,
-    /geo/i,
+    /city/i,
+    /area/i,
     /geography/i
   ],
-  device: [
-    /device/i,
-    /platform/i,
-    /user[ _-]?agent/i,
-    /browser/i
+  metric: [
+    /metric/i,
+    /measure/i,
+    /score/i,
+    /index/i,
+    /ratio/i
   ],
-  subject: [
-    /subject/i,
-    /subject[ _-]?line/i,
-    /email[ _-]?subject/i
+  dimension: [
+    /dimension/i,
+    /attribute/i,
+    /feature/i,
+    /factor/i
+  ],
+  label: [
+    /label/i,
+    /name/i,
+    /title/i,
+    /description/i
+  ],
+  group: [
+    /group/i,
+    /cluster/i,
+    /segment/i,
+    /division/i
   ]
 };
 
@@ -101,16 +97,14 @@ const getBestMatch = (scores: Record<string, number>): string | null => {
 // Detect likely columns for each field
 export const detectColumns = (headers: string[]): ColumnMapping => {
   const mapping: ColumnMapping = {
-    emailAddress: null,
-    status: null,
-    openTime: null,
-    clickTime: null,
-    campaignName: null,
+    value: null,
+    category: null,
     timestamp: null,
-    bounceType: null,
     location: null,
-    device: null,
-    subject: null
+    metric: null,
+    dimension: null,
+    label: null,
+    group: null
   };
   
   Object.keys(mapping).forEach(field => {

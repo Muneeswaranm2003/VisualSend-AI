@@ -18,19 +18,17 @@ const ColumnMapper: React.FC<ColumnMapperProps> = ({ headers }) => {
   };
   
   const requiredFields = [
-    { key: 'emailAddress', label: 'Email Address' },
-    { key: 'status', label: 'Status' },
-    { key: 'campaignName', label: 'Campaign Name' },
-    { key: 'timestamp', label: 'Sent Time' }
+    { key: 'value', label: 'Value' },
+    { key: 'category', label: 'Category' },
+    { key: 'timestamp', label: 'Time/Date' }
   ];
   
   const optionalFields = [
-    { key: 'openTime', label: 'Open Time' },
-    { key: 'clickTime', label: 'Click Time' },
-    { key: 'bounceType', label: 'Bounce Type' },
+    { key: 'metric', label: 'Metric' },
+    { key: 'dimension', label: 'Dimension' },
     { key: 'location', label: 'Location' },
-    { key: 'device', label: 'Device' },
-    { key: 'subject', label: 'Subject' }
+    { key: 'label', label: 'Label' },
+    { key: 'group', label: 'Group' }
   ];
   
   return (

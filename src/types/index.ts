@@ -1,56 +1,56 @@
-export interface EmailData {
-  emailAddress?: string;
-  status?: string;
-  openTime?: string | Date | null;
-  clickTime?: string | Date | null;
-  campaignName?: string;
+export interface DataRow {
+  value?: string | number;
+  category?: string;
   timestamp?: string | Date;
-  bounceType?: string;
   location?: string;
-  device?: string;
-  subject?: string;
+  metric?: number;
+  dimension?: string;
+  label?: string;
+  group?: string;
   [key: string]: any;
 }
 
 export interface ColumnMapping {
-  emailAddress: string | null;
-  status: string | null;
-  openTime: string | null;
-  clickTime: string | null;
-  campaignName: string | null;
+  value: string | null;
+  category: string | null;
   timestamp: string | null;
-  bounceType: string | null;
   location: string | null;
-  device: string | null;
-  subject: string | null;
+  metric: string | null;
+  dimension: string | null;
+  label: string | null;
+  group: string | null;
   [key: string]: string | null;
 }
 
 export interface ProcessedData {
-  rawData: EmailData[];
-  totalSent: number;
-  totalDelivered: number;
-  totalOpened: number;
-  totalClicked: number;
-  openRate: number;
-  clickRate: number;
-  bounceRate: number;
-  softBounces: number;
-  hardBounces: number;
-  engagementOverTime: Array<{date: string; opens: number; clicks: number}>;
-  opensByHour: Array<{hour: number; count: number}>;
-  campaignComparison: Array<{
-    campaign: string;
-    sent: number;
-    opened: number;
-    clicked: number;
-    openRate: number;
-    clickRate: number;
+  rawData: DataRow[];
+  totalRecords: number;
+  metrics: {
+    min: number;
+    max: number;
+    average: number;
+    sum: number;
+  };
+  categoricalData: Array<{
+    category: string;
+    count: number;
+    percentage: number;
   }>;
-  locationData: Array<{
+  timeSeriesData: Array<{
+    timestamp: string;
+    value: number;
+  }>;
+  geographicData: Array<{
     location: string;
-    opens: number;
-    clicks: number;
+    value: number;
+  }>;
+  dimensionalData: Array<{
+    dimension: string;
+    metrics: {
+      value: number;
+      change: number;
+      trend: 'up' | 'down' | 'stable';
+    };
   }>;
 }
 
@@ -64,14 +64,14 @@ export interface Insight {
 }
 
 export interface FilterOptions {
-  campaigns: string[];
+  categories: string[];
   startDate: Date | null;
   endDate: Date | null;
-  emailProviders: string[];
+  dimensions: string[];
 }
 
 export interface FilterState {
-  selectedCampaigns: string[];
+  selectedCategories: string[];
   dateRange: [Date | null, Date | null];
-  selectedProviders: string[];
+  selectedDimensions: string[];
 }
